@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Guess the Number Game</h2>
+
+<p>We have selected a random number between 1 and 100. See if you can guess it in 10 turns or fewer. We'll tell you if your guess was too high or too low.</p>
+
+<div id="result"></div>
+
+<input type="text" id="number" placeholder="Enter number">
+<button onclick="play()">Guess</button>
+
+<script>
+var number = Math.floor(Math.random() * 100) + 1;
+var turns = 10;
+
+function play() {
+    var userGuess = document.getElementById('number').value;
+    turns--;
+
+    if(userGuess == number) {
+        document.getElementById('result').innerHTML = "Congratulations! You got it right!";
+    } else if(turns == 0) {
+        document.getElementById('result').innerHTML = "Sorry, you lost. The number was " + number;
+    } else if(userGuess < number) {
+        document.getElementById('result').innerHTML = "Too low! You have " + turns + " guesses left.";
+    } else if(userGuess > number) {
+        document.getElementById('result').innerHTML = "Too high! You have " + turns + " guesses left.";
+    }
+}
+</script>
+
+</body>
+</html>
